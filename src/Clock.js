@@ -12,7 +12,7 @@ class Clock extends Component {
       seconds:0
 };
 this.updateClock = this.updateClock.bind(this);
-setInterval(this.updateClock, 1000);
+ this.intervalo=setInterval(this.updateClock, 1000);
 }
 
 updateClock() {
