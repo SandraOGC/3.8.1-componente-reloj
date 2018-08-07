@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from "react";
+import "./App.css";
 
 class Clock extends Component {
   constructor(props) {
@@ -9,30 +7,36 @@ class Clock extends Component {
     this.state = {
       hours: 0,
       minutes: 0,
-      seconds:0
-};
-this.updateClock = this.updateClock.bind(this);
- this.intervalo=setInterval(this.updateClock, 1000);
-}
+      seconds: 0
+    };
+    this.updateClock = this.updateClock.bind(this);
+  }
 
-updateClock() {
-  let time = new Date();
-  let timeS = time.getSeconds();
-  let timeM = time.getMinutes();
-  let timeH = time.getHours();
+  //ejercicio 1
 
-  this.setState({
-    hours: timeH,
-    minutes: timeM,
-    seconds: timeS,
-  })
+  componentDidMount() {
+    this.intervalo = setInterval(this.updateClock, 1000);
+  }
+
+  updateClock() {
+    let time = new Date();
+    let timeS = time.getSeconds();
+    let timeM = time.getMinutes();
+    let timeH = time.getHours();
+
+    this.setState({
+      hours: timeH,
+      minutes: timeM,
+      seconds: timeS
+    });
   }
 
   render() {
     return (
       <div className="App">
-
-        <h1>{this.state.hours}:{this.state.minutes}:{this.state.seconds}</h1>
+        <h1 className="clock">
+          {this.state.hours}:{this.state.minutes}:{this.state.seconds}
+        </h1>
       </div>
     );
   }
